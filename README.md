@@ -4,6 +4,10 @@ Turn an authorized local web service into a one-click macOS `.app` launcher.
 
 这个 Skill 让 Agent 为本地 Web 服务创建原生外观的 macOS 快捷应用：按需启动服务、等待健康检查、打开浏览器，并应用用户提供的 PNG 或 ICNS 图标。它不会打包服务本身，并通过输入检查降低凭据被写入启动器的风险；这些检查不能替代人工审查和专用秘密扫描。
 
+本项目最初为 DeepSeek Harness 的 macOS 启动体验设计，也可用于其他本地 Web 服务。它是社区工具，不隶属于 DeepSeek，也未获 DeepSeek 背书；仓库不包含 DeepSeek Logo 或其他专有品牌素材。
+
+This community project was originally designed for the DeepSeek Harness macOS launch experience and also works with other local web services. It is not affiliated with or endorsed by DeepSeek, and it does not include DeepSeek logos or other proprietary brand assets.
+
 ## 功能
 
 - 创建可从桌面、访达或程序坞启动的 `.app`。
