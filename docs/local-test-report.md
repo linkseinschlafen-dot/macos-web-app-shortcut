@@ -5,6 +5,7 @@ Test date: 2026-08-14
 ## Environment
 
 - Repository target: `linkseinschlafen-dot/macos-web-app-shortcut`; Git commits are identified by the hosting history.
+- Release commit: `0b63729ef1c05187e17b0d1bafae59f44e479eae`.
 - macOS: 27.0 (build 26A5406e).
 - Architecture: arm64.
 - Python: 3.9.6.
@@ -17,6 +18,7 @@ Test date: 2026-08-14
 python3 -m unittest discover -s tests -v
 python3 "$SKILL_CREATOR_DIR/scripts/quick_validate.py" macos-web-app-shortcut
 gitleaks dir --redact=100 --no-banner --no-color .
+gitleaks git --redact --exit-code 1
 ```
 
 Result: 28 tests passed; Skill validation passed.
@@ -43,9 +45,9 @@ Result: 28 tests passed; Skill validation passed.
 - Content scan for local identity, known account identifiers, common credential prefixes, and private-key headers.
 - Removal of the unverified whale image from the public package.
 - Gitleaks 8.30.1 directory scan with full redaction: no leaks found. A synthetic canary was detected before the project scan.
-- Gitleaks 8.30.1 full Git-history scan after the initial commit: one commit scanned, no leaks found.
+- Gitleaks 8.30.1 full Git-history scan at the release commit: three commits scanned, no leaks found.
 - Local-identity scan: no unapproved username, private home path, known account identifier, credential directory, provider-specific name, or actual email address found. `MengMengjiang` is intentionally present as the user-approved public copyright holder. Apparent email matches were the mandatory ICNS `@2x.png` filename strings.
-- Clean ZIP verification: no `__MACOSX`, AppleDouble `._*`, `.DS_Store`, generated app, log, cache, or excluded whale-logo entry. `zip -X` was used so extended attributes are not embedded.
+- Clean release archive verification: `git archive --format=zip` produced a source-only archive with no `__MACOSX`, AppleDouble `._*`, `.DS_Store`, generated app, log, cache, or excluded whale-logo entry.
 
 ## Not covered
 
