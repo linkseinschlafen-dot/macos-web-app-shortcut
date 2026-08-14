@@ -17,7 +17,7 @@ Test date: 2026-08-14
 ```bash
 python3 -m unittest discover -s tests -v
 python3 "$SKILL_CREATOR_DIR/scripts/quick_validate.py" macos-web-app-shortcut
-gitleaks dir --redact=100 --no-banner --no-color .
+gitleaks dir --redact --exit-code 1 .
 gitleaks git --redact --exit-code 1
 ```
 
