@@ -9,6 +9,7 @@ Test date: 2026-08-14
 - Architecture: arm64.
 - Python: 3.9.6.
 - Skill validator: Codex bundled `quick_validate.py`, SHA-256 `6cc9dc3199c935916cf6f73fcbbbb0e3bb1b58c8f5109fefa499978908164f51`.
+- Windows runtime: not available in this macOS test environment; Windows PowerShell/COM integration remains a platform-specific follow-up test.
 
 ## Commands
 
@@ -18,7 +19,7 @@ python3 "$SKILL_CREATOR_DIR/scripts/quick_validate.py" macos-web-app-shortcut
 gitleaks dir --redact=100 --no-banner --no-color .
 ```
 
-Result: 20 tests passed; Skill validation passed.
+Result: 28 tests passed; Skill validation passed.
 
 ## Passed
 
@@ -38,6 +39,7 @@ Result: 20 tests passed; Skill validation passed.
 - Absolute trusted paths for macOS build/signing tools; a test PATH containing failing tool shims was ignored as intended.
 - User-owned, non-shared output-directory enforcement; target identity recheck; external backup and rollback structure for launcher replacement.
 - Refusal to overwrite an unmarked `.app` directory; protected test content remained intact.
+- Windows launcher validation: sensitive command and URL rejection, PowerShell quoting, `.lnk` creator-marker checks, Windows name rules, and non-Windows platform guard.
 - Content scan for local identity, known account identifiers, common credential prefixes, and private-key headers.
 - Removal of the unverified whale image from the public package.
 - Gitleaks 8.30.1 directory scan with full redaction: no leaks found. A synthetic canary was detected before the project scan.
@@ -49,6 +51,7 @@ Result: 20 tests passed; Skill validation passed.
 
 - Apple Developer ID signing and notarization.
 - Execution on a second Mac or separate macOS account.
+- Actual Windows `.lnk` creation, Windows PowerShell execution, `WScript.Shell` COM behavior, and Windows shortcut launch on a Windows host.
 - Every possible shell command and Unicode edge case.
 - Crash testing at every filesystem instruction and adversarial same-user race testing beyond the guarded identity checks.
 - macOS automatically reattached `com.apple.provenance` to the local working files after `xattr -cr`; Git does not preserve this attribute, and the verified `zip -X` archive does not contain its sidecar metadata.

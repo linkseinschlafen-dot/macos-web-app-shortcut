@@ -1,5 +1,5 @@
 interface:
-  display_name: "macOS Web App Shortcut"
-  short_description: "Create macOS launchers for trusted local web apps"
+  display_name: "Web App Shortcut (Mac + Windows)"
+  short_description: "Create guarded Mac and Windows launchers"
   brand_color: "#111827"
-  default_prompt: "Use $macos-web-app-shortcut to create a local macOS launcher. Confirm the URL, exact start command, working directory, destination, and icon before writing files."
+  default_prompt: "Use $macos-web-app-shortcut to create a local macOS or Windows launcher. Confirm the platform, URL, exact start command, working directory, destination, and icon before writing files."

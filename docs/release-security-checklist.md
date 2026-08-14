@@ -10,7 +10,7 @@ Last local review: 2026-08-14
 - [x] Local URLs are required by default; remote URLs need explicit `--allow-remote` authorization.
 - [x] Sensitive command, header, token-shape, private-key, and URL-query inputs have automated rejection tests.
 - [x] Control characters and unsafe retry values are rejected.
-- [x] Existing targets are replaced only when they are marked app bundles previously created by this tool.
+- [x] Existing targets are replaced only when they are marked app bundles or Windows shortcut companions previously created by this tool.
 - [x] Symbolic-link targets and log files are rejected.
 - [x] Logs are pre-created in a private directory with mode `0600` and rechecked at launch.
 - [x] FIFO and multiply linked logs are rejected; health probes honor curl failures and require a complete 2xx response.
@@ -18,7 +18,7 @@ Last local review: 2026-08-14
 - [x] macOS build/signing tools use fixed system paths and ignore hostile `PATH` shims.
 - [x] Existing launcher identity is rechecked before replacement; the old launcher remains recoverable until the installed replacement passes final verification.
 - [x] The script does not modify firewall, routing, login items, system permissions, or security settings.
-- [x] Skill structure validation and macOS packaging/signature integration tests pass locally.
+- [x] Skill structure validation, macOS packaging/signature integration tests, and Windows launcher safety tests pass locally.
 - [x] The unverified whale logo was removed from the public package and Skill metadata.
 - [x] Gitleaks 8.30.1 directory scan passed after a synthetic canary confirmed detector operation.
 - [x] Public copyright holder confirmed as `MengMengjiang`.
@@ -33,6 +33,7 @@ Last local review: 2026-08-14
 
 ## Distribution notes
 
-- Generated `.app` bundles are local artifacts and must not be committed.
+- Generated `.app` bundles, `.lnk` files, and companion `.launcher.ps1` files are local artifacts and must not be committed.
 - Ad-hoc signing is not Developer ID signing or Apple notarization.
+- Windows `.lnk` and companion PowerShell launchers still require a real Windows host test before claiming end-to-end Windows compatibility.
 - If distributing prebuilt apps, use a separate release process with documented signing, notarization, and provenance.
